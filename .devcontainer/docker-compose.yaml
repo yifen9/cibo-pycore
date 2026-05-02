@@ -1,9 +1,9 @@
 services:
   cibo-pycore-dev:
     image: ghcr.io/yifen9/cibo-pycore-dev
-    build:
-      context: ..
-      dockerfile: Dockerfile.dev
+#     build:
+#       context: ..
+#       dockerfile: Dockerfile.dev
     container_name: cibo-pycore-dev
     working_dir: /workspace
     volumes:
