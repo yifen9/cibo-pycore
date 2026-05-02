@@ -1,0 +1,15 @@
+services:
+  cibo-lib-dev:
+    image: ghcr.io/yifen9/cibo-lib-dev
+    build:
+      context: ..
+      dockerfile: Dockerfile.dev
+    container_name: cibo-lib-dev
+    working_dir: /workspace
+    volumes:
+      - "..:/workspace"
+    command: >
+      bash -lc "
+        just init &&
+        exec sleep infinity
+      "
