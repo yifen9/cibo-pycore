@@ -55,7 +55,7 @@ ci:
     # just test
 
 docs-build:
-	uv run pdoc --math -o site cibo_lib
+	uv run pdoc --math -o site cibo_pycore
 
 docs-serve:
-    uv run pdoc --math -p 8080 cibo_lib
+    uv run pdoc --math -p 8080 cibo_pycore

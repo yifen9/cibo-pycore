@@ -1,4 +1,4 @@
-# cibo_lib.utils
+# cibo_pycore.utils
 
 Runtime utilities for logging, auditing, reproducibility metadata, and run directory versioning.
 
@@ -8,8 +8,8 @@ application code emits `Message`s through `Logger`, while sinks decide how to re
 ## logger — Message fan-out
 
 ```python
-from cibo_lib.utils.logger import Logger
-from cibo_lib.utils.console import ConsoleSink
+from cibo_pycore.utils.logger import Logger
+from cibo_pycore.utils.console import ConsoleSink
 
 logger = Logger(sinks=[ConsoleSink(transient=False)])
 logger.info("hello")
@@ -20,7 +20,7 @@ logger.error("error")
 ## message — Timestamped log message
 
 ```python
-from cibo_lib.utils.message import Level, make_message
+from cibo_pycore.utils.message import Level, make_message
 
 msg = make_message(Level.INFO, "text")
 # msg.level, msg.text, msg.timestamp
@@ -32,8 +32,8 @@ msg = make_message(Level.INFO, "text")
 
 ```python
 import json
-from cibo_lib.utils.logger import Logger
-from cibo_lib.utils.console import ConsoleSink
+from cibo_pycore.utils.logger import Logger
+from cibo_pycore.utils.console import ConsoleSink
 
 logger = Logger(sinks=[ConsoleSink(transient=True)])
 logger.info(json.dumps({"event":"app","msg":"start"}))
@@ -44,9 +44,9 @@ logger.info(json.dumps({"event":"app","msg":"start"}))
 `Progress` emits `event=progress` JSON through `Logger`, which can be consumed by `ConsoleSink` and `Audit`.
 
 ```python
-from cibo_lib.utils.logger import Logger
-from cibo_lib.utils.console import ConsoleSink
-from cibo_lib.utils.progress import Progress
+from cibo_pycore.utils.logger import Logger
+from cibo_pycore.utils.console import ConsoleSink
+from cibo_pycore.utils.progress import Progress
 
 logger = Logger(sinks=[ConsoleSink()])
 p = Progress(logger=logger, name="task", total=100)
@@ -62,8 +62,8 @@ p.finish()
 It parses message text as JSON when possible and stores progress snapshots.
 
 ```python
-from cibo_lib.utils.audit import Audit
-from cibo_lib.utils.logger import Logger
+from cibo_pycore.utils.audit import Audit
+from cibo_pycore.utils.logger import Logger
 
 meta = {"fingerprint": "0123456789abcdef"}
 audit = Audit.create("/path/to/run_dir", meta)
@@ -78,7 +78,7 @@ audit.finish_success()
 `build_meta(...)` hashes parameters and selected environment inputs to produce a compact fingerprint.
 
 ```python
-from cibo_lib.utils.meta import build_meta
+from cibo_pycore.utils.meta import build_meta
 
 meta = build_meta(
     params={"name":"exp1"},
@@ -94,7 +94,7 @@ meta = build_meta(
 `build_version_dir` creates a timestamp+fingerprint directory and writes `_meta.json`.
 
 ```python
-from cibo_lib.utils.versioner import build_version_dir
+from cibo_pycore.utils.versioner import build_version_dir
 
 run_dir = build_version_dir("/path/to/output_root", meta)
 # /path/to/output_root/<ts>_<fp>/_meta.json
@@ -105,7 +105,7 @@ run_dir = build_version_dir("/path/to/output_root", meta)
 `trace(...)` follows `params[field]` (default: `input_dir`) in `_meta.json` to reconstruct a run chain.
 
 ```python
-from cibo_lib.utils.lineage import trace
+from cibo_pycore.utils.lineage import trace
 
 nodes = trace("/path/to/run_dir", field="input_dir")
 # nodes[i].run_dir, nodes[i].prev_run_dir
@@ -117,9 +117,9 @@ nodes = trace("/path/to/run_dir", field="input_dir")
 Prefer these helpers over hand-written JSON strings to avoid escaping issues and to ensure Audit can reliably parse events as JSON.
 
 ```python
-from cibo_lib.utils.jlog import jdump, jline
-from cibo_lib.utils.logger import Logger
-from cibo_lib.utils.console import ConsoleSink
+from cibo_pycore.utils.jlog import jdump, jline
+from cibo_pycore.utils.logger import Logger
+from cibo_pycore.utils.console import ConsoleSink
 
 logger = Logger(sinks=[ConsoleSink(transient=False)])
 

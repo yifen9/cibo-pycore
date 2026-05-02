@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 from typing import Any
 
-from cibo_lib.io.json import read_json, write_json
+from cibo_pycore.io.json import read_json, write_json
 
 
 def _dir_ts(ts: str) -> str:

@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass
 from typing import Any
 
-from cibo_lib.io.json import read_json
+from cibo_pycore.io.json import read_json
 
 
 @dataclass(slots=True)

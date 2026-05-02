@@ -30,7 +30,7 @@ jobs:
           file: Dockerfile.dev
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/cibo-lib-dev:latest
-            ghcr.io/${{ github.repository_owner }}/cibo-lib-dev:${{ github.sha }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/cibo-lib-dev:cache
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/cibo-lib-dev:cache,mode=max
+            ghcr.io/${{ github.repository_owner }}/cibo-pycore-dev:latest
+            ghcr.io/${{ github.repository_owner }}/cibo-pycore-dev:${{ github.sha }}
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/cibo-pycore-dev:cache
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/cibo-pycore-dev:cache,mode=max

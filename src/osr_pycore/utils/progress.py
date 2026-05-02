@@ -4,7 +4,7 @@ import json
 import time
 from dataclasses import dataclass
 
-from cibo_lib.utils.logger import Logger
+from cibo_pycore.utils.logger import Logger
 
 
 @dataclass(slots=True)

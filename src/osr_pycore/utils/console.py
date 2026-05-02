@@ -16,7 +16,7 @@ from rich.progress import (
     TimeRemainingColumn,
 )
 
-from cibo_lib.utils.message import Message
+from cibo_pycore.utils.message import Message
 
 
 def _hhmmss(ts: str) -> str:

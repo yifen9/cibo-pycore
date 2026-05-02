@@ -1,10 +1,10 @@
 services:
-  cibo-lib-dev:
-    image: ghcr.io/yifen9/cibo-lib-dev
+  cibo-pycore-dev:
+    image: ghcr.io/yifen9/cibo-pycore-dev
     build:
       context: ..
       dockerfile: Dockerfile.dev
-    container_name: cibo-lib-dev
+    container_name: cibo-pycore-dev
     working_dir: /workspace
     volumes:
       - "..:/workspace"

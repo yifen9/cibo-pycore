@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable
 
-from cibo_lib.utils.message import Level, Message, make_message
+from cibo_pycore.utils.message import Level, Message, make_message
 
 
 Sink = Callable[[Message], None]

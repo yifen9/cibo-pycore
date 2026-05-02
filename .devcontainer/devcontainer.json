@@ -1,6 +1,6 @@
 {
   "dockerComposeFile": "docker-compose.yaml",
-  "service": "cibo-lib-dev",
+  "service": "cibo-pycore-dev",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
   "customizations": {
